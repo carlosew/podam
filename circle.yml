@@ -2,7 +2,11 @@ general:
    artifacts:
      - $CIRCLE_TEST_REPORTS
      - target
-     
+
+dependencies:
+  override:
+    - mvn --fail-never dependency:go-offline || true
+    
 test:
   override:
     - mvn clean install
